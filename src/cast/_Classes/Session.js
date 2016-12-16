@@ -130,7 +130,8 @@ export default class Session {
     this.receiver = receiver;
     this.sessionId = sessionId;
 
-    this.media = [];
+    // this.media is supposed to be an array, but queue is not supported yet
+    this.media = null;
     this.namespaces = [];
     this.senderApps = [];
     this.status = chrome.cast.SessionStatus.DISCONNECTED;
