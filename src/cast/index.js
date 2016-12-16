@@ -197,12 +197,9 @@ export default class Cast {
             );
             sessions.push(session);
           };
-          // If we already have a session, terminate the old one and then start
-          // the new one
+          // If we already have a session, fire the success callback with this session right away
           if (sessions.length && sessions[sessions.length - 1].status !== chrome.cast.SessionStatus.STOPPED) {
-            sessions[sessions.length - 1].stop(() => {
-              setTimeout(createSession, 0);
-            }, () => {});
+            successCallback(sessions[sessions.length - 1]);
           } else {
             createSession();
           }
